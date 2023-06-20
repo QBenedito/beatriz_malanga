@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parabéns!</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        #congrats {
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #000000;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        #name {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #000000;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        #motivation {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            color: #000000;
+            font-size: 1.5em;
+            text-align: center;
+            animation: scrollUp 10s linear infinite;
+        }
+
+        .balloon {
+            position: absolute;
+            animation: float 4s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0px);
+            }
+
+            50% {
+                transform: translate(10px, -10px);
+            }
+
+            100% {
+                transform: translate(0, 0px);
+            }
+        }
+
+        @keyframes scrollUp {
+            0% {
+                transform: translateY(100%);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            #congrats,
+            #name {
+                font-size: 1.5em;
+            }
+
+            #motivation {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="congrats">
+        Parabéns pela conquista das notas obtidas!
+    </div>
+    <div id="name">
+        Beatriz Malanga
+    </div>
+    <div id="motivation">
+        Continue a se empenhar ainda mais! A sua jornada está apenas começando.
+        <br>Você já demonstrou o quão capaz é.
+        <br>Não se esqueça de celebrar cada conquista.
+        <br>Lembre-se que cada pequeno passo te leva mais perto do seu objetivo.
+        <br>Persevere, persista, mas também descanse quando precisar.
+        <br>Acredite em si mesmo, mesmo quando for desafiador.
+        <br>Você é mais forte do que pensa.
+        <br>Seu futuro é brilhante.
+        <br>Estamos muito orgulhosos de você.
+        <br>Parabéns novamente, Beatriz!
+    </div>
+
+    <script>
+        var balloonEmoji = ["🎈", "🎉", "🎊"];
+
+        function createBalloon() {
+            var balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.textContent = balloonEmoji[Math.floor(Math.random() * balloonEmoji.length)];
+            balloon.style.left = Math.random() * window.innerWidth + 'px';
+            balloon.style.animationDuration = Math.max(4, Math.random() * 6) + 's';
+            balloon.style.fontSize = Math.max(24, Math.random() * 48) + 'px';
+            document.body.appendChild(balloon);
+
+            // Remove the balloon after it floats away
+            setTimeout(function () {
+                document.body.removeChild(balloon);
+            }, 4000);
+        }
+
+        // Create a new balloon every 300 milliseconds
+        setInterval(createBalloon, 300);
+    </script>
+</body>
+
+</html>
